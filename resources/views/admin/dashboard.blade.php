@@ -68,3 +68,7 @@
     <!-- /.row -->
 
 @endsection
+
+@section('control-bar')
+    Something
+@endsection

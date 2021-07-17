@@ -11,6 +11,9 @@ class SigninController extends Controller
 {
     public function displayForm()
     {
+        if(auth()->check()) {
+            return redirect()->route('home');
+        }
         return view('auth.signin');
     }
 

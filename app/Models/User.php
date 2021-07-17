@@ -49,7 +49,29 @@ class User extends Authenticatable implements Auditable
     ];
 
     /**
-     * Undocumented function
+     * The attributes that should be appends
+     *
+     * @var array
+     */
+    protected $appends = [
+        'full_name'
+    ];
+
+
+    /**
+     * Make Full Name Attribute
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /** Relations */
+
+    /**
+     * BelongsTo Relation with Role::class
      *
      * @return void
      */
@@ -57,4 +79,6 @@ class User extends Authenticatable implements Auditable
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
+
+    /** End Relations */
 }

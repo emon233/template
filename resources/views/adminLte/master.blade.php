@@ -9,7 +9,7 @@
     @include('adminLte.partials.styles')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed text-sm">
     <div class="wrapper">
 
         @include('adminLte.partials.nav')
@@ -34,7 +34,11 @@
             </div>
         </div>
 
-        @include('adminLte.partials.control')
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="p-3">
+                @yield('control-bar')
+            </div>
+        </aside>
         @include('adminLte.partials.footer')
     </div>
 
