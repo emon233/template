@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->integer('priority');
+            $table->boolean('all_access');
             $table->boolean('has_admin_access');
             $table->boolean('is_default_role');
             $table->timestamps();
