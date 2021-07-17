@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Auditing Service Provider
+         */
+        OwenIt\Auditing\AuditingServiceProvider::class,
     ],
 
     /*
