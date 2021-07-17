@@ -21,9 +21,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/dashboard', function() {
-        return view('admin');
-    })->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'adminDashboard'])->name('dashboard');
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
