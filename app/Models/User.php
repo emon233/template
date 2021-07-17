@@ -54,7 +54,7 @@ class User extends Authenticatable implements Auditable
      * @var array
      */
     protected $appends = [
-        'full_name'
+        'full_name', 'image_path'
     ];
 
 
@@ -68,10 +68,20 @@ class User extends Authenticatable implements Auditable
         return $this->first_name . ' ' . $this->last_name;
     }
 
+    /**
+     * Make Image Path Attribute
+     *
+     * @return void
+     */
+    public function getImagePathAttribute()
+    {
+        return asset('assets/adminLte/dist/img/user4-128x128.jpg');
+    }
+
     /** Relations */
 
     /**
-     * BelongsTo Relation with Role::class
+     * BelongsTo Relation with Role class
      *
      * @return void
      */

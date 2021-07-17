@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{ route('home') }}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
@@ -19,7 +19,8 @@
                 <i class="far fa-user-circle"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('profile.index') }}" class="dropdown-item @if (isset($menu) &&
+                    $menu=='profile' ) active @endif">
                     <i class="fas fa-id-card-alt mr-2"></i> {{ __('Profile') }}
                 </a>
                 <div class="dropdown-divider"></div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Web\ProfileController as WebProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', [HomeController::class, 'adminDashboard'])->name('dashboard');
+
+
+    Route::prefix('/profile')->name('profile.')->group(function() {
+        Route::get('/index', [WebProfileController::class, 'index'])->name('index');
+    });
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

@@ -9,7 +9,7 @@
     @include('adminLte.partials.styles')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed text-sm">
+<body class="hold-transition sidebar-mini layout-fixed dark-mode text-sm">
     <div class="wrapper">
 
         @include('adminLte.partials.nav')
