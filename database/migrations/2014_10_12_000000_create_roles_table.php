@@ -20,7 +20,6 @@ class CreateRolesTable extends Migration
             $table->boolean('has_admin_access');
             $table->boolean('is_default_role');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
