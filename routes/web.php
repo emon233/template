@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+include('auth.php');
 
-Route::get('/dashboard-demo', function() {
-    return view('admin');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', function() {
+        return view('admin');
+    })->name('dashboard');
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

@@ -151,6 +151,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'first_name' => 'First Name',
+        'last_name' => 'Last Name',
+        'email' => 'Email',
+        'password' => 'Password',
+        'c_password' => 'Confirm Password',
+        'phone_no' => 'Phone No',
+    ],
 
 ];

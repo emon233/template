@@ -47,4 +47,14 @@ class User extends Authenticatable implements Auditable
         'email_verified_at' => 'datetime',
         'phone_no_verified_at' => 'datetime',
     ];
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }
