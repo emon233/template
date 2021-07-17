@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/dashboard-demo', function() {
     return view('admin');
 });
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
