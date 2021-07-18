@@ -10,4 +10,8 @@ return [
     'update.phone' => 'Phone No Successfully Updated',
     'update.password' => 'Password Successfully Updated',
 
+
+    'roles.create' => 'Role Successfully Created',
+    'roles.update' => 'Role Successfully Updated',
+    'roles.delete' => 'Role Successfully Deleted',
 ];
