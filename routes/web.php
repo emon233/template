@@ -27,6 +27,10 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('/profile')->name('profile.')->group(function() {
         Route::get('/index', [WebProfileController::class, 'index'])->name('index');
+        Route::put('/update', [WebProfileController::class, 'update'])->name('update');
+        Route::put('/update/email', [WebProfileController::class, 'updateEmail'])->name('update.email');
+        Route::put('/update/phone', [WebProfileController::class, 'updatePhone'])->name('update.phone');
+        Route::put('/update/password', [WebProfileController::class, 'updatePassword'])->name('update.password');
     });
 });
 
