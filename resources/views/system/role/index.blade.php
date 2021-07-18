@@ -11,9 +11,11 @@
                 <div class="card-title">{{ __('All Roles') }}</div>
 
                 <div class="card-tools">
+                    @can('create', \App\Models\Role::class)
                     <a href="{{ route('system.roles.create') }}" class="btn btn-secondary btn-sm">
                         <i class="fas fa-plus-square"></i>
                     </a>
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -50,12 +52,17 @@
                                 <td>{{ count($role->users) }}</td>
                                 <td>
                                     <div class="btn-group">
+                                        @can('view', $role)
                                         <a href="{{ route('system.roles.show', $role) }}" class="btn btn-info btn-sm">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
+                                        @endcan
+
+                                        @can('update', $role)
                                         <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-success btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

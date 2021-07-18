@@ -11,9 +11,11 @@
                 <div class="card-title">{{ __('Create New Role') }}</div>
                 <div class="card-tools">
                     <div class="btn-group">
+                        @can('create', \App\Models\Role::class)
                         <a href="{{ route('system.roles.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-list"></i>
                         </a>
+                        @endcan
                     </div>
                 </div>
             </div>

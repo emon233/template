@@ -62,13 +62,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @can('create', \App\Models\Role::class)
                         <li class="nav-item">
-                            <a href="{{ route('system.roles.index') }}"
-                                class="nav-link @if($menu == 'roles') active @endif">
+                            <a href="{{ route('system.roles.index') }}" class="nav-link @if($menu == 'roles') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Manage Roles') }}</p>
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
             </ul>

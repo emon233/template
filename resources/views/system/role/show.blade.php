@@ -11,12 +11,17 @@
                 <div class="card-title">{{ __('Role Info - ') . $role->title }}</div>
                 <div class="card-tools">
                     <div class="btn-group">
+                        @can('viewAny', \App\Models\Role::class)
                         <a href="{{ route('system.roles.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-list"></i>
                         </a>
-                        <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-success btn-sm">
+                        @endcan
+
+                        @can('update', $role)
+                        <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i>
                         </a>
+                        @endcan
                     </div>
                 </div>
             </div>
