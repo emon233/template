@@ -25,7 +25,7 @@ class User extends Authenticatable implements Auditable
     protected $fillable = [
         'first_name', 'last_name',
         'email', 'phone_no',
-        'password',
+        'password', 'email_verified_at', 'phone_no_verified_at'
     ];
 
     /**

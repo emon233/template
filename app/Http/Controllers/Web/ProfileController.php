@@ -69,15 +69,22 @@ class ProfileController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->only('email');
-            $data['email_verified_at'] = null;
-            $update = User::find(auth()->user()->id)->update($data);
+            $user = User::find(auth()->user()->id);
 
-            if($update) {
+            if($data['email'] != $user->email) {
+                $data['email_verified_at'] = null;
+                $update = User::find(auth()->user()->id)->update($data);
+
+                if($update) {
+                    $this->success(__('success.update.email'));
+                    DB::commit();
+                } else {
+                    $this->error(__('error.update.email'));
+                    DB::rollback();
+                }
+            } else {
                 $this->success(__('success.update.email'));
                 DB::commit();
-            } else {
-                $this->error(__('error.update.email'));
-                DB::rollback();
             }
 
         } catch(\Exception $ex) {
@@ -99,15 +106,22 @@ class ProfileController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->only('phone_no');
-            $data['phone_no_verified_at'] = null;
-            $update = User::find(auth()->user()->id)->update($data);
+            $user = User::find(auth()->user()->id);
 
-            if($update) {
+            if($data['phone_no'] != $user->phone_no) {
+                $data['phone_no_verified_at'] = null;
+                $update = User::find(auth()->user()->id)->update($data);
+
+                if($update) {
+                    $this->success(__('success.update.phone'));
+                    DB::commit();
+                } else {
+                    $this->error(__('error.update.phone'));
+                    DB::rollback();
+                }
+            } else {
                 $this->success(__('success.update.phone'));
                 DB::commit();
-            } else {
-                $this->error(__('error.update.phone'));
-                DB::rollback();
             }
 
         } catch(\Exception $ex) {

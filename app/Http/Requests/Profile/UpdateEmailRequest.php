@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Profile;
 
+use App\Rules\EmailUnique;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateEmailRequest extends FormRequest
@@ -24,7 +25,7 @@ class UpdateEmailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => ['required', new EmailUnique]
         ];
     }
 }
