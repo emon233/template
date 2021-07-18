@@ -81,10 +81,8 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        $role = Role::find($id);
-
         return view('system.role.show', compact('role'));
     }
 
@@ -94,10 +92,8 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $role = Role::find($id);
-
         return view('system.role.edit', compact('role'));
     }
 
@@ -108,7 +104,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, Role $role)
     {
         try {
             DB::beginTransaction();
@@ -118,7 +114,7 @@ class RoleController extends Controller
             $data['has_admin_access'] = $request->has('has_admin_access') ? 1:0;
             $data['is_default_role'] = $request->has('is_default_role') ? 1:0;
 
-            if(Role::find($id)->update($data)) {
+            if(Role::find($role->id)->update($data)) {
                 $this->success(__('success.update'));
                 DB::commit();
             }
@@ -137,12 +133,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         try {
             DB::beginTransaction();
 
-            $role = Role::find($id);
+            $role = Role::find($role->id);
 
             if(count($role->users)) {
                 $this->error(__('error.roles.delete.users'));

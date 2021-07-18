@@ -34,9 +34,9 @@ Route::prefix('/system')->name('system.')->middleware('auth')->group(function ()
         Route::get('/index', [RoleController::class, 'index'])->name('index');
         Route::get('/create', [RoleController::class, 'create'])->name('create');
         Route::post('/store', [RoleController::class, 'store'])->name('store');
-        Route::get('/show/{id}', [RoleController::class, 'show'])->name('show');
-        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
-        Route::put('/update/{id}', [RoleController::class, 'update'])->name('update');
-        Route::delete('/delete/{id}', [RoleController::class, 'delete'])->name('delete');
+        Route::get('/show/{role}', [RoleController::class, 'show'])->name('show');
+        Route::get('/edit/{role}', [RoleController::class, 'edit'])->name('edit');
+        Route::put('/update/{role}', [RoleController::class, 'update'])->name('update');
+        Route::delete('/delete/{role}', [RoleController::class, 'delete'])->name('delete');
     });
 });
