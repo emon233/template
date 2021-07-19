@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $roles = Role::orderBy('priority', 'desc')->get();
 
         foreach($roles as $role) {
-            $users = $role->priority == 100 ? 1:rand(2,4);
+            $users = $role->priority == 100 ? 1:4;
             for($i=0; $i<$users; $i++) {
                 User::create([
                     'role_id' => $role->id,

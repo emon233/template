@@ -14,27 +14,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['System Admin', 'Admin', 'User'];
-
         $roles = [
             [
                 'title' => 'System Admin',
                 'priority' => 100,
                 'all_access' => 1,
-                'has_admin_access' => 1,
-                'is_default_role' => 0,
-            ],
-            [
-                'title' => 'Admin',
-                'priority' => 50,
-                'all_access' => 0,
-                'has_admin_access' => 1,
-                'is_default_role' => 0,
-            ],
-            [
-                'title' => 'Operator',
-                'priority' => 40,
-                'all_access' => 0,
                 'has_admin_access' => 1,
                 'is_default_role' => 0,
             ],
