@@ -29,6 +29,7 @@
 
             <div class="content">
                 <div class="container-fluid">
+                    @include('adminLte.messages.session')
                     @yield('content')
                 </div>
             </div>
@@ -43,6 +44,7 @@
     </div>
 
     @include('adminLte.partials.scripts')
+    @yield('content-scripts')
 </body>
 
 </html>
