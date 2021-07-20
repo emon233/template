@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Web\System\AccessController as AccessController;
 use App\Http\Controllers\Web\System\RoleController as RoleController;
+
+
 use App\Http\Controllers\Web\ProfileController as WebProfileController;
 use App\Http\Controllers\Auth\Web\SigninController as WebSigninController;
 use App\Http\Controllers\Auth\Web\SignupController as WebSignupController;
@@ -38,5 +41,16 @@ Route::prefix('/system')->name('system.')->middleware('auth')->group(function ()
         Route::get('/edit/{role}', [RoleController::class, 'edit'])->name('edit');
         Route::put('/update/{role}', [RoleController::class, 'update'])->name('update');
         Route::delete('/delete/{role}', [RoleController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/accesses')->name('accesses.')->group(function () {
+        Route::get('/index', [AccessController::class, 'index'])->name('index');
+        // Route::get('/create', [AccessController::class, 'create'])->name('create');
+        // Route::post('/store', [AccessController::class, 'store'])->name('store');
+        // Route::get('/show/{access}', [AccessController::class, 'show'])->name('show');
+        // Route::get('/edit/{access}', [AccessController::class, 'edit'])->name('edit');
+        // Route::put('/update/{access}', [AccessController::class, 'update'])->name('update');
+        // Route::delete('/delete/{access}', [AccessController::class, 'delete'])->name('delete');
+        Route::get('/auto-update', [AccessController::class, 'auto'])->name('auto');
     });
 });

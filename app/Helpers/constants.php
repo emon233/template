@@ -3,6 +3,8 @@
 const SITE_NAME = "AdminLTEv3.1";
 const SITE_NAME_SHORT = "v3.1";
 
+const DEFAULT_PAGINATE = 10;
+
 const ROLE_PRIORITY_MIN = 1;
 const ROLE_PRIORITY_MAX = 100;
 

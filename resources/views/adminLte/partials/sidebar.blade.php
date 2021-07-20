@@ -48,7 +48,7 @@
                 </li>
 
                 <?php
-                    $systemManagementArray = ['roles'];
+                    $systemManagementArray = ['roles','accesses'];
                     $menu = isset($menu) ? $menu : '';
                     $systemManagement = in_array($menu, $systemManagementArray) ? true : false;
                 ?>
@@ -67,6 +67,14 @@
                             <a href="{{ route('system.roles.index') }}" class="nav-link @if($menu == 'roles') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Manage Roles') }}</p>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('create', \App\Models\Access::class)
+                        <li class="nav-item">
+                            <a href="{{ route('system.accesses.index') }}" class="nav-link @if($menu == 'accesses') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Manage Access') }}</p>
                             </a>
                         </li>
                         @endcan

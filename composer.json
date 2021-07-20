@@ -35,7 +35,8 @@
         "files": [
             "App/Helpers/constants.php",
             "App/Helpers/array.php",
-            "App/Helpers/functions.php"
+            "App/Helpers/functions.php",
+            "App/Helpers/accesses.php"
         ]
     },
     "autoload-dev": {
