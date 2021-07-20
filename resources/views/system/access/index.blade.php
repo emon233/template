@@ -40,6 +40,7 @@
                         </tbody>
                     </table>
                 </div>
+                {!! $accesses->onEachSide(1)->links() !!}
             </div>
         </div>
     </div>
