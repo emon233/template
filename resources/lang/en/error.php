@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'exception' => 'Something Went Wrong',
+
     'create' => 'Creating Failed',
     'update' => 'Updating Failed',
     'delete' => 'Deleting Failed',

@@ -158,6 +158,7 @@ return [
         'password' => 'Password',
         'c_password' => 'Confirm Password',
         'phone_no' => 'Phone No',
+        'role_id' => 'Role',
     ],
 
 ];

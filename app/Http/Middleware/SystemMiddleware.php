@@ -16,7 +16,7 @@ class SystemMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role->all_access) {
+        if(auth()->check() && auth()->user()->role->all_access) {
             return $next($request);
         }
 

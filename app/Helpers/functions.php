@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Role;
+
 /**
  * Undocumented function
  *
@@ -24,4 +26,16 @@ function isSystemAdmin()
     }
 
     return false;
+}
+
+/**
+ * Get Roles for authenticated user
+ *
+ * @return void
+ */
+function getRolesOnUser()
+{
+    $userPriority = auth()->user()->role->priority;
+
+    return Role::where('priority', '<=', $userPriority)->orderBy('priority', 'desc')->get();
 }

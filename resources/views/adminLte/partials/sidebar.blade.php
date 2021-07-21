@@ -32,6 +32,7 @@
         </div> --}}
 
         <!-- Sidebar Menu -->
+        <?php $menu = isset($menu) ? $menu : ''; ?>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column text-sm" data-widget="treeview" role="menu"
                 data-accordion="false">
@@ -47,10 +48,35 @@
                     </a>
                 </li>
 
+                <?php
+                    $userManagementArray = ['users'];
+                    $userManagement = in_array($menu, $userManagementArray) ? true : false;
+
+                ?>
+                <li class="nav-item @if($userManagement) menu-open @endif">
+                    <a href="#" class="nav-link @if($userManagement) active @endif">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            {{ __('User Management') }}
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @can('viewAny', \App\Models\User::class)
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link @if($menu == 'users') active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Manage Users') }}</p>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </li>
+
                 @if (auth()->user()->role->all_access)
+
                 <?php
                     $systemManagementArray = ['roles','accesses'];
-                    $menu = isset($menu) ? $menu : '';
                     $systemManagement = in_array($menu, $systemManagementArray) ? true : false;
                 ?>
 
@@ -63,7 +89,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @can('create', \App\Models\Role::class)
+                        @can('viewAny', \App\Models\Role::class)
                         <li class="nav-item">
                             <a href="{{ route('system.roles.index') }}" class="nav-link @if($menu == 'roles') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
@@ -71,7 +97,7 @@
                             </a>
                         </li>
                         @endcan
-                        @can('create', \App\Models\Access::class)
+                        @can('viewAny', \App\Models\Access::class)
                         <li class="nav-item">
                             <a href="{{ route('system.accesses.index') }}" class="nav-link @if($menu == 'accesses') active @endif">
                                 <i class="far fa-circle nav-icon"></i>
