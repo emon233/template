@@ -26,7 +26,6 @@
                             <th>{{ __('#') }}</th>
                             <th>{{ __('Model Title') }}</th>
                             <th>{{ __('Method Name') }}</th>
-                            <th>{{ __('Action') }}</th>
                         </thead>
                         <tbody>
                             @foreach ($accesses as $access)
@@ -34,7 +33,6 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $access->model_name }}</td>
                                 <td>{{ $access->method_name }}</td>
-                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>
