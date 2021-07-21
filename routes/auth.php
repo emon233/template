@@ -19,9 +19,8 @@ Route::post('/signup', [WebSignupController::class, 'signup'])->name('signup.pos
 
 Route::post('/signout', [WebSigninController::class, 'signout'])->name('signout');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'adminDashboard'])->name('dashboard');
-
 
     Route::prefix('/profile')->name('profile.')->group(function () {
         Route::get('/index', [WebProfileController::class, 'index'])->name('index');
@@ -32,7 +31,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::prefix('/system')->name('system.')->middleware('auth')->group(function () {
+Route::prefix('/system')->name('system.')->middleware('system')->group(function () {
     Route::prefix('/roles')->name('roles.')->group(function () {
         Route::get('/index', [RoleController::class, 'index'])->name('index');
         Route::get('/create', [RoleController::class, 'create'])->name('create');

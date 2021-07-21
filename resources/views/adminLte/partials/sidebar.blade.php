@@ -47,6 +47,7 @@
                     </a>
                 </li>
 
+                @if (auth()->user()->role->all_access)
                 <?php
                     $systemManagementArray = ['roles','accesses'];
                     $menu = isset($menu) ? $menu : '';
@@ -80,6 +81,7 @@
                         @endcan
                     </ul>
                 </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
