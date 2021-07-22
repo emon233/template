@@ -1,5 +1,25 @@
 <?php
 
+use App\Models\Role;
+use App\Models\Access;
+
+/**
+ * Check Access Permission
+ *
+ * @return boolean
+ */
+function hasAccess($model, $method)
+{
+    $model = str_replace("App\Models\\", "", $model);
+    $access = Access::where('model_name', $model)->first();
+
+    if(!auth()->check()) return false;
+    $role = auth()->user()->role;
+
+    if($role->all_access) return true;
+    else return false;
+}
+
 /**
  * Methods Listing
  */
@@ -40,6 +60,7 @@ function all_methods($input = null)
 
 const MODEL_USER = "User";
 const MODEL_ROLE = "Role";
+const MODEL_ACCESS = "Access";
 
 /**
  * Get All Listed Models
@@ -51,7 +72,8 @@ function all_models($input = null)
 {
     $output = [
         MODEL_USER => __('User'),
-        MODEL_ROLE => __('Role')
+        MODEL_ROLE => __('Role'),
+        MODEL_ACCESS => __('Access')
     ];
 
     return is_null($input) ? $output : $output[$input];

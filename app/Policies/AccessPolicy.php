@@ -18,7 +18,7 @@ class AccessPolicy
      */
     public function viewAny(User $user)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class AccessPolicy
      */
     public function view(User $user, Access $access)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'view');
     }
 
     /**
@@ -41,7 +41,7 @@ class AccessPolicy
      */
     public function create(User $user)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'create');
     }
 
     /**
@@ -53,7 +53,7 @@ class AccessPolicy
      */
     public function update(User $user, Access $access)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'update');
     }
 
     /**
@@ -65,7 +65,7 @@ class AccessPolicy
      */
     public function delete(User $user, Access $access)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class AccessPolicy
      */
     public function restore(User $user, Access $access)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class AccessPolicy
      */
     public function forceDelete(User $user, Access $access)
     {
-        return isSystemAdmin();
+        return hasAccess('App\Models\Access', 'forceDelete');
     }
 }
