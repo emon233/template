@@ -42,19 +42,22 @@
                             <div class="form-group row">
                                 <label for="priority" class="col-12">{{ __('Priority Level') }}</label>
                                 <div class="col-12">
-                                    <input type="number" name="priority" id="priority" class="form-control" value="{{ $role->priority }}">
+                                    <input type="number" name="priority" id="priority"
+                                        class="form-control"
+                                        min="{{ ROLE_PRIORITY_MIN }}" max="{{ ROLE_PRIORITY_MAX }}"
+                                        value="{{ $role->priority ?? old('priority') ?? ROLE_PRIORITY_MIN }}" required />
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input custom-control-input-danger" type="checkbox" id="all_access" name="all_access" {{ $role->all_access ? 'checked':'' }}>
+                                <input class="custom-control-input custom-control-input-danger" type="checkbox" id="all_access" name="all_access" {{ $role->all_access ? 'checked':'' }} />
                                 <label for="all_access" class="custom-control-label">{{ __('Allow All Access') }}</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4">
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input custom-control-input-warning" type="checkbox" id="has_admin_access" name="has_admin_access" {{ $role->has_admin_access? 'checked':'' }}>
+                                <input class="custom-control-input custom-control-input-warning" type="checkbox" id="has_admin_access" name="has_admin_access" {{ $role->has_admin_access? 'checked':'' }} />
                                 <label for="has_admin_access" class="custom-control-label">{{ __('Allow Admin Access') }}</label>
                             </div>
                         </div>

@@ -5,6 +5,12 @@ use App\Models\Access;
 use App\Models\AccessRole;
 
 /**
+ * Variables
+ */
+const ROLE_PRIORITY_MIN = 1;
+const ROLE_PRIORITY_MAX = 100;
+
+/**
  * Check Access Permission
  *
  * @return boolean

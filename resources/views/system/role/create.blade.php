@@ -42,7 +42,8 @@
                                 <label for="priority" class="col-12">{{ __('Priority Level') }}</label>
                                 <div class="col-12">
                                     <input type="number" name="priority" id="priority" class="form-control @error('priority') is-invalid @enderror"
-                                        value="{{ old('priority') ?? 0 }}">
+                                        min="{{ ROLE_PRIORITY_MIN }}" max="{{ ROLE_PRIORITY_MAX }}"
+                                        value="{{ old('priority') ?? ROLE_PRIORITY_MIN }}">
                                     @error('priority')
                                     <div class="invalid-feedback">
                                         <strong>{{ $message }}</strong>

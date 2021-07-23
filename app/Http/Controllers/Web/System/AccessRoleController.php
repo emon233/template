@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 class AccessRoleController extends Controller
 {
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(AccessRole::class, 'accessRole');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
