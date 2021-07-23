@@ -1,7 +1,7 @@
 <?php
 
-const SITE_NAME = "AdminLTEv3.1";
-const SITE_NAME_SHORT = "v3.1";
+const SITE_NAME = "Template";
+const SITE_NAME_SHORT = "Template";
 
 const DEFAULT_PAGINATE = 10;
 
