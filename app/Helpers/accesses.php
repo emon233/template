@@ -66,6 +66,42 @@ function hasAccessAssign($model, $method, $role)
 }
 
 /**
+ * Check All Access Permission for Role
+ *
+ * @param [type] $model
+ * @param [type] $role
+ * @return boolean
+ */
+function hasAllAccessAssign($model, $role)
+{
+    if($role->all_access) return true;
+    else {
+        $accesses = Access::where([
+            ['model_name', $model]
+        ])->get();
+
+        $accessCount = count($accesses);
+        $counter = 0;
+
+        foreach(all_methods() as $method) {
+            $access = Access::where([
+                ['model_name', $model], ['method_name', $method]
+            ])->first();
+
+            if($access) {
+                $check = AccessRole::where([
+                    ['access_id', $access->id], ['role_id', $role->id]
+                ])->first();
+
+                if($check) $counter++;
+            }
+        }
+
+        return $accessCount == $counter ? true : false;
+    }
+}
+
+/**
  * Methods Listing
  */
 

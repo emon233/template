@@ -40,7 +40,7 @@
                                     <div class="form-group clearfix">
                                         <div class="icheck-success d-inline">
                                             <input type="checkbox" id="{{ $model }}"
-                                                class="access-checkbox-all">
+                                                class="access-checkbox-all" @if(hasAllAccessAssign($model, $role)) checked @endif>
                                             <label for="{{ $model }}" class="col-12">{{ __('All') }}</label>
                                         </div>
                                     </div>
