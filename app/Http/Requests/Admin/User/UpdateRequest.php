@@ -34,4 +34,15 @@ class UpdateRequest extends FormRequest
             'c_password' => ['same:password']
         ];
     }
+
+    /**
+     * Prepare For Validation Method
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        if ($this->has('phone_no'))
+            $this->merge(['phone_no' => generateBangladeshiNumber($this->phone_no)]);
+    }
 }

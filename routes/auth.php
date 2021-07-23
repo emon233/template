@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Web\System\AccessController as AccessController;
+use App\Http\Controllers\Web\System\AccessRoleController as AccessRoleController;
 use App\Http\Controllers\Web\System\RoleController as RoleController;
 
 
@@ -40,6 +41,11 @@ Route::prefix('/system')->name('system.')->middleware('system')->group(function 
         Route::get('/edit/{role}', [RoleController::class, 'edit'])->name('edit');
         Route::put('/update/{role}', [RoleController::class, 'update'])->name('update');
         Route::delete('/delete/{role}', [RoleController::class, 'delete'])->name('delete');
+
+        Route::prefix('/accesses')->name('accesses.')->group(function() {
+            Route::get('/index/{role}', [AccessRoleController::class, 'index'])->name('index');
+            Route::post('/store/{role}', [AccessRoleController::class, 'store'])->name('store');
+        });
     });
 
     Route::prefix('/accesses')->name('accesses.')->group(function () {

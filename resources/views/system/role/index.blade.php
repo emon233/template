@@ -63,6 +63,12 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         @endcan
+
+                                        @can('viewAny', \App\Models\AccessRole::class)
+                                        <a href="{{ route('system.roles.accesses.index', $role) }}" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-universal-access"></i>
+                                        </a>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

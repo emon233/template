@@ -14,4 +14,6 @@ return [
     'roles.create' => 'Role Successfully Created',
     'roles.update' => 'Role Successfully Updated',
     'roles.delete' => 'Role Successfully Deleted',
+
+    'roles.access.assign' => 'Access Successfully Assigned',
 ];

@@ -16,4 +16,6 @@ return [
     'roles.update' => 'Role Updating Failed',
     'roles.delete' => 'Role Deleting Failed',
     'roles.delete.users' => 'Role Deleting Failed. Active users found!!!',
+
+    'roles.access.assign' => 'Assignment Failed',
 ];

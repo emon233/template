@@ -21,9 +21,9 @@ class Role extends Model implements Auditable
     protected $guarded = [];
 
     /**
-     * HasMany Relation with User class
+     * Get all of the Users for the Role
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()
     {

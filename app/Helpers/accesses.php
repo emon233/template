@@ -2,6 +2,7 @@
 
 use App\Models\Role;
 use App\Models\Access;
+use App\Models\AccessRole;
 
 /**
  * Check Access Permission
@@ -16,8 +17,52 @@ function hasAccess($model, $method)
     if(!auth()->check()) return false;
     $role = auth()->user()->role;
 
-    if($role->all_access) return true;
-    else return false;
+    if($role->all_access) {
+        return true;
+    } else {
+        $access = Access::where([
+            ['model_name', $model], ['method_name', $method]
+        ])->first();
+
+        if($access) {
+            $access_role = AccessRole::where([
+                ['access_id', '=', $access->id], ['role_id', $role->id]
+            ])->first();
+
+            return $access_role ? true : false;
+        } else {
+            return false;
+        }
+    }
+}
+
+/**
+ * Check Access Permission for Assignment
+ *
+ * @param [type] $model
+ * @param [type] $method
+ * @param [type] $role
+ * @return boolean
+ */
+function hasAccessAssign($model, $method, $role)
+{
+    if($role->all_access) {
+        return true;
+    } else {
+        $access = Access::where([
+            ['model_name', $model], ['method_name', $method]
+        ])->first();
+
+        if($access) {
+            $access_role = AccessRole::where([
+                ['access_id', '=', $access->id], ['role_id', $role->id]
+            ])->first();
+
+            return $access_role ? true : false;
+        } else {
+            return false;
+        }
+    }
 }
 
 /**
@@ -61,6 +106,7 @@ function all_methods($input = null)
 const MODEL_USER = "User";
 const MODEL_ROLE = "Role";
 const MODEL_ACCESS = "Access";
+const MODEL_ACCESS_ROLE = "AccessRole";
 
 /**
  * Get All Listed Models
@@ -73,8 +119,10 @@ function all_models($input = null)
     $output = [
         MODEL_USER => __('User'),
         MODEL_ROLE => __('Role'),
-        MODEL_ACCESS => __('Access')
+        MODEL_ACCESS => __('Access'),
+        MODEL_ACCESS_ROLE => __('AccessRole'),
     ];
 
+    ksort($output);
     return is_null($input) ? $output : $output[$input];
 }

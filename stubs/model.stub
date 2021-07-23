@@ -13,4 +13,19 @@ class {{ class }} extends Model
 {
     use \OwenIt\Auditing\Auditable;
     use HasFactory, Uuids, SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [];
+
+
+    /**
+     * The attributes that are appendable
+     *
+     * @var array
+     */
+    protected $appends = [];
 }
