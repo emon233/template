@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'signup' => 'Successfully Signed Up',
+
     'create' => 'Successfully Created',
     'update' => 'Successfully Updated',
     'delete' => 'Successfully Deleted',

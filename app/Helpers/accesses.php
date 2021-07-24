@@ -10,6 +10,12 @@ use App\Models\AccessRole;
 const ROLE_PRIORITY_MIN = 1;
 const ROLE_PRIORITY_MAX = 100;
 
+function getDefaultRole()
+{
+    $defaultRole = Role::where('is_default_role', STATUS_ACTIVE)->first();
+    return $defaultRole->id;
+}
+
 /**
  * Check Access Permission
  *

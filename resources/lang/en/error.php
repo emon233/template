@@ -3,6 +3,8 @@
 return [
     'exception' => 'Something Went Wrong',
 
+    'signup' => 'Signup Failed',
+
     'create' => 'Creating Failed',
     'update' => 'Updating Failed',
     'delete' => 'Deleting Failed',
