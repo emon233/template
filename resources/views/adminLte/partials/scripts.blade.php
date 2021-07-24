@@ -8,6 +8,8 @@
 
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/adminLte/dist/js/adminlte.min.js') }}"></script>
+<!-- Custom Scripts -->
+<script src="{{ asset('assets/adminLte/custom/scripts.js') }}"></script>
 
 <script>
     $(document).ready(function() {

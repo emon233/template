@@ -37,7 +37,6 @@ class SigninController extends Controller
     protected function credentials(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        //$credentials['status'] = 1;
 
         return $credentials;
     }

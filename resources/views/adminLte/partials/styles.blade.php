@@ -8,3 +8,5 @@
 <link rel="stylesheet" href="{{ asset('assets/adminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('assets/adminLte/dist/css/adminlte.min.css') }}">
+<!-- Custom style -->
+<link rel="stylesheet" href="{{ asset('assets/adminLte/custom/styles.css') }}">
