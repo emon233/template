@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth\Web;
 
 use Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\SigninPhoneRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\SigninRequest;
 
@@ -11,34 +12,41 @@ class SigninController extends Controller
 {
     public function displayForm()
     {
-        if(auth()->check()) {
+        if (auth()->check()) {
             return redirect()->route('home');
         }
         return view('auth.signin');
     }
 
-    public function signin(SigninRequest $request)
+    public function displayPhoneForm()
     {
-        $credentials = $this->credentials($request);
+        if (auth()->check()) {
+            return redirect()->route('home');
+        }
 
-        if(Auth::guard('web')->attempt($credentials, $request->filled('remember'))){
+        return view('auth.phone-signin');
+    }
+
+    public function signinPhone(SigninPhoneRequest $request)
+    {
+        $credentials = $request->only('phone_no', 'password');
+
+        if (Auth::guard('web')->attempt($credentials, $request->filled('remember'))) {
             return redirect()->route('home');
         }
 
         return redirect()->back();
     }
 
-    /**
-     * Make Credential
-     *
-     * @param \Illuminate\Http\Request
-     * @return $credentials
-     */
-    protected function credentials(Request $request)
+    public function signin(SigninRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
-        return $credentials;
+        if (Auth::guard('web')->attempt($credentials, $request->filled('remember'))) {
+            return redirect()->route('home');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -62,6 +70,6 @@ class SigninController extends Controller
 
         return redirect()
             ->route('welcome')
-            ->with('status','User has been logged out!');
+            ->with('status', 'User has been logged out!');
     }
 }

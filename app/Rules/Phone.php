@@ -25,7 +25,7 @@ class Phone implements Rule
      */
     public function passes($attribute, $value)
     {
-        return strlen($value) == 14 && preg_match(REGEX_PATTERN_BD_MOBILE, $value) ? true : false;
+        return (strlen($value) == 14 && preg_match(REGEX_PATTERN_BD_MOBILE, $value)) ? true : false;
     }
 
     /**

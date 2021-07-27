@@ -15,6 +15,9 @@ use App\Http\Controllers\Auth\Web\SignupController as WebSignupController;
 Route::get('/signin', [WebSigninController::class, 'displayForm'])->name('signin');
 Route::post('/signin', [WebSigninController::class, 'signin'])->name('signin.post');
 
+Route::get('/signin-phone-no', [WebSigninController::class, 'displayPhoneForm'])->name('signin.phone');
+Route::post('/signin-phone-no', [WebSigninController::class, 'signinPhone'])->name('signin.phone.post');
+
 Route::get('/signup', [WebSignupController::class, 'displayForm'])->name('signup');
 Route::post('/signup', [WebSignupController::class, 'signup'])->name('signup.post');
 
@@ -42,7 +45,7 @@ Route::prefix('/system')->name('system.')->middleware('system')->group(function 
         Route::put('/update/{role}', [RoleController::class, 'update'])->name('update');
         Route::delete('/delete/{role}', [RoleController::class, 'delete'])->name('delete');
 
-        Route::prefix('/accesses')->name('accesses.')->group(function() {
+        Route::prefix('/accesses')->name('accesses.')->group(function () {
             Route::get('/index/{role}', [AccessRoleController::class, 'index'])->name('index');
             Route::post('/store/{role}', [AccessRoleController::class, 'store'])->name('store');
         });

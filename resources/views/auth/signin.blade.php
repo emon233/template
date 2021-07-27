@@ -58,7 +58,13 @@
                     </div>
                 </form>
                 <p class="mb-0">
-                    <a href="{{ route('signup') }}" class="text-center">Register a new membership</a>
+                    <a href="{{ route('signin.phone') }}" class="text-center">
+                        <i class="fas fa-phone"></i> {{ __('Signin with Phone No') }}
+                    </a>
+                    <br />
+                    <a href="{{ route('signup') }}" class="text-center">
+                        <i class="fas fa-user-plus"></i> {{ __('Register a new membership') }}
+                    </a>
                 </p>
             </div>
         </div>
