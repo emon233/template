@@ -75,7 +75,7 @@ class User extends Authenticatable implements Auditable
      */
     public function getImagePathAttribute()
     {
-        return asset('assets/adminLte/dist/img/user4-128x128.jpg');
+        return asset('assets/defaults/user-image.png');
     }
 
     /** Relations */
