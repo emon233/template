@@ -1,6 +1,6 @@
 <?php
 
-use App\Mail\UserSignup;
+use App\Mail\System\UserSignup;
 
 const EMAIL_SIGNUP_REPORT = "sazid.hossain.1433@gmail.com";
 const EMAIL_ERROR_REPORT = "sazid.hossain.1433@gmail.com";
