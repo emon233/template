@@ -2,3 +2,88 @@
     color: antiquewhite;
     background-color: purple;
 }
+
+.btn-list::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f03a";
+}
+
+.btn-list:hover {
+    color: antiquewhite;
+}
+
+.btn-new {
+    color: antiquewhite;
+    background-color: purple;
+}
+
+.btn-new:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0fe";
+}
+
+.btn-new:hover {
+    color: antiquewhite;
+}
+
+.btn-show {
+    color: antiquewhite;
+    background-color: rgb(65, 4, 80);
+}
+
+.btn-show:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f05a";
+}
+
+.btn-show:hover {
+    color: antiquewhite;
+}
+
+.btn-edit {
+    color: antiquewhite;
+    background-color: green;
+}
+
+.btn-edit::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f044";
+}
+
+.btn-edit:hover {
+    color: antiquewhite;
+}
+
+.btn-access {
+    color: antiquewhite;
+    background-color: rgb(134, 122, 7);
+}
+
+.btn-access::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f29a";
+}
+
+.btn-access:hover {
+    color: antiquewhite;
+}
+
+.btn-save {
+    color: antiquewhite;
+    background-color: purple;
+}
+
+.btn-save::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0c7";
+}
+
+.btn-save:hover {
+    color: antiquewhite;
+}

@@ -12,9 +12,7 @@
                 <div class="card-tools">
                     <div class="btn-group">
                         @can('create', \App\Models\User::class)
-                        <a href="{{ route('admin.users.create') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-plus-square"></i>
-                        </a>
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-new btn-sm"></a>
                         @endcan
                     </div>
                 </div>
@@ -42,14 +40,10 @@
                                 <td>
                                     <div class="btn-group">
                                         @can('view', $user)
-                                        <a href="{{ route('admin.users.show', $user) }}" class="btn btn-info btn-sm">
-                                            <i class="fas fa-info-circle"></i>
-                                        </a>
+                                        <a href="{{ route('admin.users.show', $user) }}" class="btn btn-show btn-sm"></a>
                                         @endcan
                                         @can('update', $user)
-                                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-edit btn-sm"></a>
                                         @endcan
                                     </div>
                                 </td>

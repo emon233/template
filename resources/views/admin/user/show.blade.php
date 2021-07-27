@@ -12,19 +12,13 @@
                 <div class="card-tools">
                     <div class="btn-group">
                         @can('viewAny', \App\Models\User::class)
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-list"></i>
-                        </a>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-list btn-sm"></a>
                         @endcan
                         @can('create', \App\Models\User::class)
-                        <a href="{{ route('admin.users.create') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-plus-square"></i>
-                        </a>
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-new btn-sm"></a>
                         @endcan
                         @can('update', $user)
-                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-edit btn-sm"></a>
                         @endcan
                     </div>
                 </div>

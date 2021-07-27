@@ -12,19 +12,13 @@
                 <div class="card-tools">
                     <div class="btn-group">
                         @can('viewAny', \App\Models\User::class)
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-list"></i>
-                        </a>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-list btn-sm"></a>
                         @endcan
                         @can('create', \App\Models\User::class)
-                        <a href="{{ route('admin.users.create') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-plus-square"></i>
-                        </a>
+                        <a href="{{ route('admin.users.create') }}" class="btn btn-new btn-sm"></a>
                         @endcan
                         @can('view', $user)
-                        <a href="{{ route('admin.users.show', $user) }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
+                        <a href="{{ route('admin.users.show', $user) }}" class="btn btn-show btn-sm"></a>
                         @endcan
                     </div>
                 </div>
@@ -144,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm float-right">
+                    <button type="submit" class="btn btn-save btn-sm float-right">
                         {{ __('Save User') }}
                     </button>
                 </form>

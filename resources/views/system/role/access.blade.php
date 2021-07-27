@@ -14,9 +14,7 @@
 
                 <div class="card-tools">
                     @can('viewAny', \App\Models\Role::class)
-                    <a href="{{ route('system.roles.index') }}" class="btn btn-secondary btn-sm">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
+                    <a href="{{ route('system.roles.index') }}" class="btn btn-list btn-sm"></a>
                     @endcan
                 </div>
             </div>
@@ -58,8 +56,8 @@
                         </div>
                         @endforeach
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm float-right">
-                        {{ __('Submit') }}
+                    <button type="submit" class="btn btn-save btn-sm float-right">
+                        {{ __('Save Access') }}
                     </button>
                 </form>
             </div>

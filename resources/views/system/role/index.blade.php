@@ -12,9 +12,7 @@
 
                 <div class="card-tools">
                     @can('create', \App\Models\Role::class)
-                    <a href="{{ route('system.roles.create') }}" class="btn btn-secondary btn-sm">
-                        <i class="fas fa-plus-square"></i>
-                    </a>
+                    <a href="{{ route('system.roles.create') }}" class="btn btn-new btn-sm"></a>
                     @endcan
                 </div>
             </div>
@@ -53,21 +51,15 @@
                                 <td>
                                     <div class="btn-group">
                                         @can('view', $role)
-                                        <a href="{{ route('system.roles.show', $role) }}" class="btn btn-info btn-sm">
-                                            <i class="fas fa-info-circle"></i>
-                                        </a>
+                                        <a href="{{ route('system.roles.show', $role) }}" class="btn btn-show btn-sm"></a>
                                         @endcan
 
                                         @can('update', $role)
-                                        <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-success btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                        <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-edit btn-sm"></a>
                                         @endcan
 
                                         @can('viewAny', \App\Models\AccessRole::class)
-                                        <a href="{{ route('system.roles.accesses.index', $role) }}" class="btn btn-danger btn-sm">
-                                            <i class="fas fa-universal-access"></i>
-                                        </a>
+                                        <a href="{{ route('system.roles.accesses.index', $role) }}" class="btn btn-access btn-sm"></a>
                                         @endcan
                                     </div>
                                 </td>

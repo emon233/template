@@ -12,15 +12,15 @@
                 <div class="card-tools">
                     <div class="btn-group">
                         @can('viewAny', \App\Models\Role::class)
-                        <a href="{{ route('system.roles.index') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-list"></i>
-                        </a>
+                        <a href="{{ route('system.roles.index') }}" class="btn btn-list btn-sm"></a>
                         @endcan
 
                         @can('update', $role)
-                        <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-info btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                        <a href="{{ route('system.roles.edit', $role) }}" class="btn btn-edit btn-sm"></a>
+                        @endcan
+
+                        @can('viewAny', \App\Models\AccessRole::class)
+                        <a href="{{ route('system.roles.accesses.index', $role) }}" class="btn btn-access btn-sm"></a>
                         @endcan
                     </div>
                 </div>

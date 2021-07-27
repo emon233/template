@@ -12,9 +12,7 @@
                 <div class="card-tools">
                     <div class="btn-group">
                         @can('create', \App\Models\Role::class)
-                        <a href="{{ route('system.roles.index') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-list"></i>
-                        </a>
+                        <a href="{{ route('system.roles.index') }}" class="btn btn-list btn-sm"></a>
                         @endcan
                     </div>
                 </div>
@@ -77,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm float-right">
+                    <button type="submit" class="btn btn-save btn-sm float-right">
                         {{ __('Save Role') }}
                     </button>
                 </form>
