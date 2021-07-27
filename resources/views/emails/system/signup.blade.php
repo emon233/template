@@ -27,9 +27,6 @@
 @component('mail::button', ['url' => route('admin.users.show', $user->id)])
 User Info
 @endcomponent
-@component('mail::button', ['url' => SITE_URL_SIGNIN])
-Visit Now
-@endcomponent
 
 Thanks,<br>
 {{ SITE_NAME }}

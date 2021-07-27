@@ -16,10 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->role->has_admin_access) {
+        if (auth()->check() && auth()->user()->role->has_admin_access) {
             return $next($request);
         }
 
-        return redirect()->route('home');
+        return redirect()->route('signin');
     }
 }

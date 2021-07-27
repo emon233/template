@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth\Web;
 
 use DB;
-use Mail;
 use Auth;
 use Session;
 use App\Models\User;
@@ -32,9 +31,8 @@ class SignupController extends BaseController
             $user->role_id = getDefaultRole();
             $user->password = bcrypt($request->password);
 
-            if ($user->save()) {
+            if ($user->save() && sendSignupMail($user) == null) {
                 $this->success(__('success.signup'));
-                Mail::to(EMAIL_ERROR_REPORT)->send(new UserSignup($user));
                 DB::commit();
                 return redirect()->route('signin');
             }
