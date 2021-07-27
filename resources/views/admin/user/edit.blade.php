@@ -77,7 +77,7 @@
                             <div class="form-group row">
                                 <label for="phone_no" class="col-12">{{ __('validation.attributes.phone_no') }}</label>
                                 <div class="col-12">
-                                    <input type="number" name="phone_no" id="phone_no"
+                                    <input type="text" name="phone_no" id="phone_no"
                                         class="form-control @error('phone_no') is-invalid @enderror"
                                         value="{{ old('phone_no') ?? $user->phone_no ?? '' }}" />
                                     @error('phone_no')
