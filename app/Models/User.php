@@ -91,4 +91,26 @@ class User extends Authenticatable implements Auditable
     }
 
     /** End Relations */
+
+    /** Query Scopes */
+
+    /**
+     * Query Scope with Search Keywords
+     *
+     * @param [type] $query
+     * @param [type] $keywords
+     * @return void
+     */
+    public function scopeSearchKeywords($query, $keywords)
+    {
+        $columns = \Schema::getColumnListing($this->getTable());
+
+        $query = $query->where(function ($q) use ($keywords, $columns) {
+            foreach ($columns as $column) {
+                $q->orWhere($column, 'LIKE', "%{$keywords}%");
+            }
+        });
+    }
+
+    /** End Query Scopes */
 }

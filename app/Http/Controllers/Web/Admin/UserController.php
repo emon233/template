@@ -28,13 +28,21 @@ class UserController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $userPriority = auth()->user()->role->priority;
 
-        $users = User::with('role')->whereHas('role', function ($q) use ($userPriority) {
+        $query = User::query();
+
+        $query->with('role')->whereHas('role', function ($q) use ($userPriority) {
             $q->where('priority', '<=', $userPriority);
-        })->paginate(DEFAULT_PAGINATE);
+        });
+
+        if ($request->has('keywords')) {
+            $query->searchKeywords($request->keywords);
+        }
+
+        $users = $query->paginate(DEFAULT_PAGINATE)->withQueryString();
 
         return view('admin.user.index', compact('users'));
     }

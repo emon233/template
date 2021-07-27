@@ -88,6 +88,21 @@
     color: antiquewhite;
 }
 
+.btn-search {
+    color: antiquewhite;
+    background-color: purple;
+}
+
+.btn-search::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f002";
+}
+
+.btn-search:hover {
+    color: antiquewhite;
+}
+
 .fa-check-circle {
     color: green;
 }
@@ -99,4 +114,8 @@
 a.verify:hover {
     color: red;
     text-decoration: underline;
+}
+
+.filter {
+    margin-bottom: 5px;
 }

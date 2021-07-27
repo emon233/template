@@ -18,6 +18,25 @@
                 </div>
             </div>
             <div class="card-body">
+                <form action="{{ route('admin.users.index') }}" method="get">
+                    <div class="row filter">
+                        <div class="col-12 col-lg-8"></div>
+                        <div class="col-12 col-lg-4">
+                            <div class="input-group mb-3">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="{{ __('Keywords') }}"
+                                    id="keywords" name="keywords"
+                                    value="{{ app('request')->input('keywords') }}"
+                                />
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-search" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table class="table table-bordered table-condensed">
                         <thead>
