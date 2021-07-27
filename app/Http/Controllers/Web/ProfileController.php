@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use DB;
 use Session;
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\Profile\UpdateRequest;
@@ -13,7 +13,7 @@ use App\Http\Requests\Profile\UpdateEmailRequest;
 use App\Http\Requests\Profile\UpdatePhoneNoRequest;
 use App\Http\Requests\Profile\UpdatePasswordRequest;
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     /**
      * Display Profile Page
@@ -22,7 +22,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->role->has_admin_access) {
+        if (auth()->user()->role->has_admin_access) {
             return view('admin.profile.index');
         }
 
@@ -42,15 +42,14 @@ class ProfileController extends Controller
             $data = $request->only('first_name', 'last_name');
             $update = User::find(auth()->user()->id)->update($data);
 
-            if($update) {
+            if ($update) {
                 $this->success(__('success.update.profile'));
                 DB::commit();
             } else {
                 $this->error(__('error.update.profile'));
                 DB::rollback();
             }
-
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
         }
@@ -71,11 +70,11 @@ class ProfileController extends Controller
             $data = $request->only('email');
             $user = User::find(auth()->user()->id);
 
-            if($data['email'] != $user->email) {
+            if ($data['email'] != $user->email) {
                 $data['email_verified_at'] = null;
                 $update = User::find(auth()->user()->id)->update($data);
 
-                if($update) {
+                if ($update) {
                     $this->success(__('success.update.email'));
                     DB::commit();
                 } else {
@@ -86,8 +85,7 @@ class ProfileController extends Controller
                 $this->success(__('success.update.email'));
                 DB::commit();
             }
-
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
         }
@@ -108,11 +106,11 @@ class ProfileController extends Controller
             $data = $request->only('phone_no');
             $user = User::find(auth()->user()->id);
 
-            if($data['phone_no'] != $user->phone_no) {
+            if ($data['phone_no'] != $user->phone_no) {
                 $data['phone_no_verified_at'] = null;
                 $update = User::find(auth()->user()->id)->update($data);
 
-                if($update) {
+                if ($update) {
                     $this->success(__('success.update.phone'));
                     DB::commit();
                 } else {
@@ -123,8 +121,7 @@ class ProfileController extends Controller
                 $this->success(__('success.update.phone'));
                 DB::commit();
             }
-
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
         }
@@ -146,15 +143,14 @@ class ProfileController extends Controller
             $data['password'] = bcrypt($data['password']);
             $update = User::find(auth()->user()->id)->update($data);
 
-            if($update) {
+            if ($update) {
                 $this->success(__('success.update.password'));
                 DB::commit();
             } else {
                 $this->error(__('error.update.password'));
                 DB::rollback();
             }
-
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
         }

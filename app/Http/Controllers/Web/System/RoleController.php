@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Web\System;
 
 use DB;
 use App\Models\Role;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 use App\Http\Requests\System\Role\StoreRequest;
 use App\Http\Requests\System\Role\UpdateRequest;
 
-class RoleController extends Controller
+class RoleController extends BaseController
 {
     /**
      * Create the controller instance.
@@ -58,11 +58,11 @@ class RoleController extends Controller
 
             $role['title'] = $request->get('title');
             $role['priority'] = $request->get('priority');
-            $role['all_access'] = $request->has('all_access') ? 1:0;
-            $role['has_admin_access'] = $request->has('has_admin_access') ? 1:0;
-            $role['is_default_role'] = $request->has('is_default_role') ? 1:0;
+            $role['all_access'] = $request->has('all_access') ? 1 : 0;
+            $role['has_admin_access'] = $request->has('has_admin_access') ? 1 : 0;
+            $role['is_default_role'] = $request->has('is_default_role') ? 1 : 0;
 
-            if($role->save()) {
+            if ($role->save()) {
                 $this->success(__('success.create'));
                 DB::commit();
             }
@@ -110,11 +110,11 @@ class RoleController extends Controller
             DB::beginTransaction();
 
             $data = $request->only('title', 'priority');
-            $data['all_access'] = $request->has('all_access') ? 1:0;
-            $data['has_admin_access'] = $request->has('has_admin_access') ? 1:0;
-            $data['is_default_role'] = $request->has('is_default_role') ? 1:0;
+            $data['all_access'] = $request->has('all_access') ? 1 : 0;
+            $data['has_admin_access'] = $request->has('has_admin_access') ? 1 : 0;
+            $data['is_default_role'] = $request->has('is_default_role') ? 1 : 0;
 
-            if(Role::find($role->id)->update($data)) {
+            if (Role::find($role->id)->update($data)) {
                 $this->success(__('success.update'));
                 DB::commit();
             }
@@ -140,16 +140,16 @@ class RoleController extends Controller
 
             $role = Role::find($role->id);
 
-            if(count($role->users)) {
+            if (count($role->users)) {
                 $this->error(__('error.roles.delete.users'));
                 return redirect()->back();
             } else {
-                if($role->delete()) {
+                if ($role->delete()) {
                     $this->success(__('success.roles.delete'));
                     DB::commit();
                 }
             }
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
             return redirect()->back();

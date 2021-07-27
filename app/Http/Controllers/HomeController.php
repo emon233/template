@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+use App\Http\Controllers\WebController as BaseController;
+
+class HomeController extends BaseController
 {
     public function home()
     {

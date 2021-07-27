@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Web\Admin;
 use DB;
 use Session;
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     /**
      * Create the controller instance.
@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $userPriority = auth()->user()->role->priority;
 
-        $users = User::with('role')->whereHas('role', function($q) use ($userPriority){
+        $users = User::with('role')->whereHas('role', function ($q) use ($userPriority) {
             $q->where('priority', '<=', $userPriority);
         })->paginate(DEFAULT_PAGINATE);
 
@@ -71,13 +71,12 @@ class UserController extends Controller
             $user->role_id = $request->role_id;
             $user->password = bcrypt($request->password);
 
-            if($user->save()) {
+            if ($user->save()) {
                 DB::commit();
                 $this->success(__('success.create'));
                 return redirect()->route('admin.users.show', $user);
             }
-
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
             return redirect()->back()->withInput();
@@ -126,15 +125,14 @@ class UserController extends Controller
             $user->phone_no_verified_at = now();
             $user->role_id = $request->role_id;
 
-            if($request->password) $user->password = bcrypt($request->password);
+            if ($request->password) $user->password = bcrypt($request->password);
 
-            if($user->save()) {
+            if ($user->save()) {
                 DB::commit();
                 $this->success(__('success.update'));
                 return redirect()->route('admin.users.show', $user);
             }
-
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
             return redirect()->back()->withInput();

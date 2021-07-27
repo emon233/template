@@ -7,10 +7,10 @@ use Session;
 use App\Models\Access;
 use App\Models\AccessRole;
 use App\Models\Role;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 
-class AccessRoleController extends Controller
+class AccessRoleController extends BaseController
 {
     /**
      * Create the controller instance.
@@ -41,16 +41,16 @@ class AccessRoleController extends Controller
     public function store(Request $request, Role $role)
     {
         $accessArray = [];
-        if($request->has('method')) {
+        if ($request->has('method')) {
             $methodArray = $request->get('method');
-            foreach($methodArray as $key=>$method) {
-                $split = explode("-",$key);
+            foreach ($methodArray as $key => $method) {
+                $split = explode("-", $key);
                 $model = $split[0];
                 $method = $split[1];
 
                 $check = $this->does_model_method_exist($model, $method);
 
-                if($check) {
+                if ($check) {
                     $accessArray[] = $check;
                 }
             }
@@ -60,14 +60,14 @@ class AccessRoleController extends Controller
             DB::beginTransaction();
             $status = $this->sync_data($role->id, $accessArray);
 
-            if($status) {
+            if ($status) {
                 $this->success(__('success.roles.access.assign'));
                 DB::commit();
             } else {
                 $this->error(__('error.roles.access.assign'));
                 DB::rollback();
             }
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
         }
@@ -103,23 +103,23 @@ class AccessRoleController extends Controller
         try {
             $access_roles = AccessRole::withTrashed()->where('role_id', $role_id)->get();
 
-            foreach($access_roles as $accessRole) {
+            foreach ($access_roles as $accessRole) {
                 AccessRole::withTrashed()->find($accessRole->id)->forceDelete();
             }
 
-            foreach($accesses as $access) {
+            foreach ($accesses as $access) {
                 $exist = AccessRole::where([
                     ['role_id', $role_id], ['access_id', $access]
                 ])->first();
 
-                if(!$exist) {
+                if (!$exist) {
                     AccessRole::create([
                         'role_id' => $role_id,
                         'access_id' => $access
                     ]);
                 }
             }
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             $status = false;
             $this->errorEx($ex->getMessage());
         }

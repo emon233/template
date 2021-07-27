@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Web\System;
 
 use DB;
 use App\Models\Access;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 
-class AccessController extends Controller
+class AccessController extends BaseController
 {
     /**
      * Create the controller instance.
@@ -45,18 +45,18 @@ class AccessController extends Controller
         try {
             $accessCount = 0;
             $trueCount = 0;
-            foreach($models as $model) {
-                foreach($methods as $method) {
+            foreach ($models as $model) {
+                foreach ($methods as $method) {
                     $accessCount++;
                     $checked = $this->check($model, $method);
 
-                    if(!$checked) {
+                    if (!$checked) {
                         $access = new Access;
 
                         $access->model_name = $model;
                         $access->method_name = $method;
 
-                        if($access->save()){
+                        if ($access->save()) {
                             $trueCount++;
                         }
                     } else {
@@ -65,12 +65,12 @@ class AccessController extends Controller
                 }
             }
 
-            if($accessCount == $trueCount) {
+            if ($accessCount == $trueCount) {
                 $this->success(__('success.create'));
                 DB::commit();
                 return redirect()->route('system.accesses.index');
             }
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
             return redirect()->back();
