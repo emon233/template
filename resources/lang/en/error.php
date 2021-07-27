@@ -14,6 +14,9 @@ return [
     'update.phone' => 'Phone No Updating Failed',
     'update.password' => 'Password Updating Failed',
 
+    'verify.email' => 'Email Verification Failed',
+    'verify.phone_no' => 'Phone No Verification Failed',
+
     'roles.create' => 'Role Creating Failed',
     'roles.update' => 'Role Updating Failed',
     'roles.delete' => 'Role Deleting Failed',

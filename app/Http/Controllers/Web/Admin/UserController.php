@@ -120,9 +120,7 @@ class UserController extends BaseController
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->email = $request->email;
-            $user->email_verified_at = now();
             $user->phone_no = $request->phone_no;
-            $user->phone_no_verified_at = now();
             $user->role_id = $request->role_id;
 
             if ($request->password) $user->password = bcrypt($request->password);
@@ -136,6 +134,56 @@ class UserController extends BaseController
             DB::rollback();
             $this->errorEx($ex->getMessage());
             return redirect()->back()->withInput();
+        }
+    }
+
+    /**
+     * Verify User Email Manually
+     *
+     * @param User $user
+     * @return void
+     */
+    public function verify_email(User $user)
+    {
+        try {
+            DB::beginTransaction();
+
+            $user->email_verified_at = now();
+
+            if ($user->save()) {
+                DB::commit();
+                $this->success(__('success.verify.email'));
+                return redirect()->route('admin.users.show', $user);
+            }
+        } catch (\Exception $ex) {
+            DB::rollback();
+            $this->errorEx($ex->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Verify Phone No Manually
+     *
+     * @param User $user
+     * @return void
+     */
+    public function verify_phone_no(User $user)
+    {
+        try {
+            DB::beginTransaction();
+
+            $user->phone_no_verified_at = now();
+
+            if ($user->save()) {
+                DB::commit();
+                $this->success(__('success.verify.phone_no'));
+                return redirect()->route('admin.users.show', $user);
+            }
+        } catch (\Exception $ex) {
+            DB::rollback();
+            $this->errorEx($ex->getMessage());
+            return redirect()->back();
         }
     }
 

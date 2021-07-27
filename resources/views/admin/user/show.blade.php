@@ -25,8 +25,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <!-- Profile Image -->
+                    <div class="col-12 col-md-6 col-lg-4">
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
@@ -41,21 +40,35 @@
                                 <ul class="list-group list-group-unbordered mb-3">
                                     @if ($user->email)
                                     <li class="list-group-item">
+                                        @if ($user->email_verified_at)
+                                        <i class="fas fa-check-circle"></i>
+                                        @endif
                                         <b>{{ $user->email }}</b>
+                                        @if(!$user->email_verified_at)
+                                        <a href="{{ route('admin.users.verify.email', $user) }}" class="verify">{{ __('Verify') }}</a>
+                                        @endif
                                     </li>
                                     @endif
 
                                     @if ($user->phone_no)
                                     <li class="list-group-item">
+                                        @if ($user->phone_no_verified_at)
+                                        <i class="fas fa-check-circle"></i>
+                                        @endif
                                         <b>{{ $user->phone_no }}</b>
+                                        @if(!$user->phone_no_verified_at)
+                                        <a href="{{ route('admin.users.verify.phone_no', $user) }}" class="verify">{{ __('Verify') }}</a>
+                                        @endif
                                     </li>
                                     @endif
                                 </ul>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
+                    <form id="form-verify" action="#" method="post">
+                        @csrf
+                        @method('put')
+                    </form>
                 </div>
             </div>
         </div>
@@ -65,5 +78,34 @@
 @endsection
 
 @section('control-bar')
+
+@endsection
+
+@section('content-scripts')
+
+<script>
+    $(document).ready(function(){
+        $('.verify').on('click', function(e){
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $('#form-verify').attr('action', url);
+
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Verify!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#form-verify').submit();
+                } else {
+                    cancelOperation("error", "Operation Canceled");
+                }
+            })
+        })
+    })
+</script>
 
 @endsection

@@ -27,5 +27,8 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () 
         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
         Route::put('/update/{user}', [UserController::class, 'update'])->name('update');
         Route::delete('/delete/{user}', [UserController::class, 'delete'])->name('delete');
+
+        Route::put('/verify-email/{user}', [UserController::class, 'verify_email'])->name('verify.email');
+        Route::put('/verify-phone/{user}', [UserController::class, 'verify_phone_no'])->name('verify.phone_no');
     });
 });

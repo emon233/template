@@ -87,3 +87,16 @@
 .btn-save:hover {
     color: antiquewhite;
 }
+
+.fa-check-circle {
+    color: green;
+}
+
+.verify {
+    color: wheat;
+}
+
+a.verify:hover {
+    color: red;
+    text-decoration: underline;
+}

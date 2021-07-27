@@ -33,7 +33,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->full_name }}</td>
                                 <td>
+                                    @if($user->email_verified_at)
+                                        <i class="fas fa-check-circle"></i>
+                                    @endif
                                     {{ $user->email }}<br />
+                                    @if($user->phone_no_verified_at)
+                                    <i class="fas fa-check-circle"></i>
+                                    @endif
                                     {{ $user->phone_no }}
                                 </td>
                                 <td>{{ $user->role->title }}</td>

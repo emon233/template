@@ -12,6 +12,8 @@ return [
     'update.phone' => 'Phone No Successfully Updated',
     'update.password' => 'Password Successfully Updated',
 
+    'verify.email' => 'Email Verified Successfully',
+    'verify.phone_no' => 'Phone No Verified Successfully',
 
     'roles.create' => 'Role Successfully Created',
     'roles.update' => 'Role Successfully Updated',
