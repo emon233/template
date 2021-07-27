@@ -37,7 +37,8 @@
             "App/Helpers/array.php",
             "App/Helpers/functions.php",
             "App/Helpers/accesses.php",
-            "App/Helpers/system.php"
+            "App/Helpers/system.php",
+            "App/Helpers/mails.php"
         ]
     },
     "autoload-dev": {
