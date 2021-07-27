@@ -31,7 +31,7 @@ class SignupController extends BaseController
             $user->role_id = getDefaultRole();
             $user->password = bcrypt($request->password);
 
-            if ($user->save() && sendSignupMail($user) == null) {
+            if ($user->save() && sendSignupMail($user) == null && sendWelcomeMail($user) == null) {
                 $this->success(__('success.signup'));
                 DB::commit();
                 return redirect()->route('signin');
