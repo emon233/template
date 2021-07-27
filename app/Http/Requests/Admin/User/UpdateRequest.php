@@ -28,8 +28,8 @@ class UpdateRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'min:2', 'max:255'],
             'last_name' => ['required', 'string', 'min:2', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,'.$this->user->id],
-            'phone_no' => ['nullable', new Phone, 'unique:users,phone_no,'.$this->user->id],
+            'email' => ['required', 'email', 'unique:users,email,' . $this->user->id],
+            'phone_no' => ['nullable', new Phone, 'unique:users,phone_no,' . $this->user->id],
             'password' => ['nullable', 'string', 'min:' . PASSWORD_MIN_LENGTH, 'max:' . PASSWORD_MAX_LENGTH],
             'c_password' => ['same:password']
         ];
@@ -42,7 +42,7 @@ class UpdateRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        if ($this->has('phone_no'))
+        if ($this->has('phone_no') && $this->get('phone_no') != null)
             $this->merge(['phone_no' => generateBangladeshiNumber($this->phone_no)]);
     }
 }

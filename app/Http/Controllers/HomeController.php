@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use App\Mail\UserSignup;
+
 use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\WebController as BaseController;
+use App\Models\User;
 
 class HomeController extends BaseController
 {

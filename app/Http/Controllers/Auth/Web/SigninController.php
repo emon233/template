@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Auth\Web;
 
 use Auth;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use App\Http\Requests\Auth\SigninPhoneRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\SigninRequest;
 
-class SigninController extends Controller
+class SigninController extends BaseController
 {
     public function displayForm()
     {

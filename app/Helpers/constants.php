@@ -10,6 +10,7 @@ const PASSWORD_MAX_LENGTH = 15;
 
 const SITE_LOGO_PRIMARY = "assets/adminLte/dist/img/AdminLTELogo.png";
 const SITE_LOGO_SECONDARY = "assets/adminLte/dist/img/AdminLTELogo.png";
+const SITE_LOGO_MAIL = "assets/adminLte/dist/img/AdminLTELogo.png";
 
 const STATUS_ACTIVE = 1;
 const STATUS_INACTIVE = 0;

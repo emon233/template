@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Auth\Web;
 
 use DB;
+use Mail;
 use Auth;
 use Session;
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\SignupRequest;
 
-class SignupController extends Controller
+use App\Mail\UserSignup;
+
+class SignupController extends BaseController
 {
     public function displayForm()
     {
@@ -29,12 +32,13 @@ class SignupController extends Controller
             $user->role_id = getDefaultRole();
             $user->password = bcrypt($request->password);
 
-            if($user->save()) {
+            if ($user->save()) {
                 $this->success(__('success.signup'));
+                Mail::to(EMAIL_ERROR_REPORT)->send(new UserSignup($user));
                 DB::commit();
                 return redirect()->route('signin');
             }
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             DB::rollback();
             $this->errorEx($ex->getMessage());
             return redirect()->back()->withInput();

@@ -42,7 +42,7 @@ class StoreRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        if ($this->has('phone_no'))
+        if ($this->has('phone_no') && $this->get('phone_no') != null)
             $this->merge(['phone_no' => generateBangladeshiNumber($this->phone_no)]);
     }
 }

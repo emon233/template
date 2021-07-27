@@ -21,5 +21,4 @@ include('admin.php');
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 
-
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
