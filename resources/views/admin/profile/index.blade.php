@@ -41,7 +41,7 @@
             <div class="card-body box-profile">
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <form method="post" action="{{ route('profile.update') }}">
+                        <form method="post" action="{{ route('admin.profile.update') }}">
                             @csrf
                             @method('put')
                             <div class="form-group row">
@@ -79,7 +79,7 @@
                     <div class="col-12 col-md-6">
                         <div class="row">
                             <div class="col-12">
-                                <form method="post" action="{{ route('profile.update.email') }}">
+                                <form method="post" action="{{ route('admin.profile.update.email') }}">
                                     @csrf
                                     @method('put')
                                     <div class="form-group row">
@@ -104,7 +104,7 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <form action="{{ route('profile.update.phone') }}" method="post">
+                                <form action="{{ route('admin.profile.update.phone') }}" method="post">
                                     @csrf
                                     @method('put')
                                     <div class="form-group row">
@@ -131,7 +131,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-12 col-md-12">
-                        <form action="{{ route('profile.update.password') }}" method="post">
+                        <form action="{{ route('admin.profile.update.password') }}" method="post">
                             @csrf
                             @method('put')
                             <div class="row">

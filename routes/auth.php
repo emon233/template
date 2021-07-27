@@ -23,18 +23,6 @@ Route::post('/signup', [WebSignupController::class, 'signup'])->name('signup.pos
 
 Route::post('/signout', [WebSigninController::class, 'signout'])->name('signout');
 
-Route::middleware('admin')->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'adminDashboard'])->name('dashboard');
-
-    Route::prefix('/profile')->name('profile.')->group(function () {
-        Route::get('/index', [WebProfileController::class, 'index'])->name('index');
-        Route::put('/update', [WebProfileController::class, 'update'])->name('update');
-        Route::put('/update/email', [WebProfileController::class, 'updateEmail'])->name('update.email');
-        Route::put('/update/phone', [WebProfileController::class, 'updatePhone'])->name('update.phone');
-        Route::put('/update/password', [WebProfileController::class, 'updatePassword'])->name('update.password');
-    });
-});
-
 Route::prefix('/system')->name('system.')->middleware('system')->group(function () {
     Route::prefix('/roles')->name('roles.')->group(function () {
         Route::get('/index', [RoleController::class, 'index'])->name('index');

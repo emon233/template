@@ -19,7 +19,7 @@
                 <i class="far fa-user-circle"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <a href="{{ route('profile.index') }}" class="dropdown-item @if (isset($menu) &&
+                <a href="{{ route('admin.profile.index') }}" class="dropdown-item @if (isset($menu) &&
                     $menu=='profile' ) active @endif">
                     <i class="fas fa-id-card-alt mr-2"></i> {{ __('Profile') }}
                 </a>
