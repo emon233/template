@@ -99,6 +99,8 @@ class UserController extends BaseController
      */
     public function show(User $user)
     {
+        if ($user->id == auth()->user()->id) return redirect()->route('admin.profile.index');
+
         return view('admin.user.show', compact('user'));
     }
 
@@ -110,6 +112,8 @@ class UserController extends BaseController
      */
     public function edit(User $user)
     {
+        if ($user->id == auth()->user()->id) return redirect()->route('admin.profile.index');
+
         return view('admin.user.edit', compact('user'));
     }
 

@@ -10,6 +10,8 @@ use App\Http\Controllers\WebController as BaseController;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\SignupRequest;
 
+use Illuminate\Auth\Events\Registered;
+
 use App\Mail\UserSignup;
 
 class SignupController extends BaseController
@@ -31,8 +33,9 @@ class SignupController extends BaseController
             $user->role_id = getDefaultRole();
             $user->password = bcrypt($request->password);
 
-            if ($user->save() && sendSignupMail($user) == null && sendWelcomeMail($user) == null) {
+            if ($user->save() && sendSignupMail($user) == null) {
                 $this->success(__('success.signup'));
+                event(new Registered($user));
                 DB::commit();
                 return redirect()->route('signin');
             }

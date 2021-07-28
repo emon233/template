@@ -3,10 +3,10 @@
 
 Welcome to ## {{ SITE_NAME }} ##.
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => route('welcome')])
 Button Text
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+{{ SITE_NAME }}
 @endcomponent

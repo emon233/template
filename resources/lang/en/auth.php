@@ -17,4 +17,7 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+
+    'verify.notice' => 'We sent you a verification email. Please check your inbox (or Spam Folder) and verify your email to continue.',
+    'verify.notice.resend' => 'We resent you a verification email. Please check your inbox (or Spam Folder) and verify your email to continue.',
 ];
