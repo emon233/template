@@ -19,4 +19,6 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that email address.",
 
+    'reset.success' => 'Your password has been reset!',
+    'reset.error' => 'Password reset failed',
 ];

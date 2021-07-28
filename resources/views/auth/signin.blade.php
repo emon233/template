@@ -65,6 +65,10 @@
                     <a href="{{ route('signup') }}" class="text-center">
                         <i class="fas fa-user-plus"></i> {{ __('Register a new membership') }}
                     </a>
+                    <br />
+                    <a href="{{ route('password.request') }}" class="text-center" style="color:darkred;">
+                        <i class="fas fa-key"></i> {{ __('Forgot Password? Click Here.') }}
+                    </a>
                 </p>
             </div>
         </div>

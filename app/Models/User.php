@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\CanResetPassword;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\Uuids;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements Auditable, MustVerifyEmail
+class User extends Authenticatable implements Auditable, MustVerifyEmail, CanResetPassword
 {
     use \OwenIt\Auditing\Auditable;
     use HasApiTokens, HasFactory, Notifiable, Uuids, SoftDeletes;

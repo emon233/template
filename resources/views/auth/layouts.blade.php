@@ -19,6 +19,7 @@
 
 <body class="hold-transition login-page">
 
+    @include('adminLte.messages.session')
     @yield('content')
 
     <!-- jQuery -->
