@@ -114,5 +114,10 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, CanRes
         });
     }
 
+    public function scopePaginate($query, $paginate = 0)
+    {
+        $query->paginate($paginate ? $paginate : DEFAULT_PAGINATE);
+    }
+
     /** End Query Scopes */
 }

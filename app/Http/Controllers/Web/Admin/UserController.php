@@ -42,7 +42,9 @@ class UserController extends BaseController
             $query->searchKeywords($request->keywords);
         }
 
-        $users = $query->paginate(DEFAULT_PAGINATE)->withQueryString();
+        $paginate = $request->has('per_page') ? $request->per_page : DEFAULT_PAGINATE;
+
+        $users = $query->paginate($paginate)->withQueryString();
 
         return view('admin.user.index', compact('users'));
     }

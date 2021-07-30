@@ -20,7 +20,15 @@
             <div class="card-body">
                 <form action="{{ route('admin.users.index') }}" method="get">
                     <div class="row filter">
-                        <div class="col-12 col-lg-8"></div>
+                        <div class="col-12 col-lg-1">
+                            <select name="per_page" id="per_page" class="form-control">
+                                <?php $paginate = app('request')->has('per_page') ? app('request')->input('per_page') : DEFAULT_PAGINATE; ?>
+                                @foreach (paginationNumbers() as $item)
+                                <option value="{{ $item }}" @if($paginate == $item) selected @endif>{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-7"></div>
                         <div class="col-12 col-lg-4">
                             <div class="input-group mb-3">
                                 <input
