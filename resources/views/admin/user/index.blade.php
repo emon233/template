@@ -19,7 +19,6 @@
             </div>
             <div class="card-body">
                 @include('admin.components.search', ['model' => 'App\Models\User', 'paginator' => $users])
-                @include('vendor.pagination.result', ['paginator' => $users])
                 <div class="table-responsive">
                     <table class="table table-bordered table-condensed">
                         <thead>
