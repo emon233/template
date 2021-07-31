@@ -21,7 +21,7 @@ function generateBangladeshiNumber($string)
  */
 function isSystemAdmin()
 {
-    if(auth()->check()) {
+    if (auth()->check()) {
         return auth()->user()->role->priority == 100 ? true : false;
     }
 
@@ -38,4 +38,9 @@ function getRolesOnUser()
     $userPriority = auth()->user()->role->priority;
 
     return Role::where('priority', '<=', $userPriority)->orderBy('priority', 'desc')->get();
+}
+
+function modifyColumnName($string)
+{
+    return strtoupper(str_replace('_', ' ', $string));
 }

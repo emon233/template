@@ -103,20 +103,27 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, CanRes
      * @param [type] $keywords
      * @return void
      */
-    public function scopeSearchKeywords($query, $keywords)
+    public function scopeSearch($query, $request)
     {
-        $columns = \Schema::getColumnListing($this->getTable());
+        $keywords = $request->keywords ?? null;
+        $order_by = $request->order_by ?? DEFAULT_ORDER_BY;
+        $order = $request->order ?? DEFAULT_ORDER;
 
-        $query = $query->where(function ($q) use ($keywords, $columns) {
-            foreach ($columns as $column) {
-                $q->orWhere($column, 'LIKE', "%{$keywords}%");
-            }
-        });
-    }
+        if (!is_null($keywords)) {
+            $columns = \Schema::getColumnListing($this->getTable());
 
-    public function scopePaginate($query, $paginate = 0)
-    {
-        $query->paginate($paginate ? $paginate : DEFAULT_PAGINATE);
+            $query = $query->where(function ($q) use ($keywords, $columns) {
+                foreach ($columns as $column) {
+                    $q->orWhere($column, 'LIKE', "%{$keywords}%");
+                    $arrayKeywords = explode(" ", $keywords);
+                    foreach ($arrayKeywords as $keyword) {
+                        $q->orWhere($column, 'LIKE', "%{$keyword}%");
+                    }
+                }
+            });
+        }
+
+        $query = $query->orderBy($order_by, $order);
     }
 
     /** End Query Scopes */

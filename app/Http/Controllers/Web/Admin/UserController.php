@@ -35,11 +35,11 @@ class UserController extends BaseController
         $query = User::query();
 
         $query->with('role')->whereHas('role', function ($q) use ($userPriority) {
-            $q->where('priority', '<=', $userPriority);
+            $q->orWhere('priority', '<=', $userPriority);
         });
 
-        if ($request->has('keywords')) {
-            $query->searchKeywords($request->keywords);
+        if ($request->has('keywords') || $request->has('order_by') || $request->has('order')) {
+            $query->search($request);
         }
 
         $paginate = $request->has('per_page') ? $request->per_page : DEFAULT_PAGINATE;

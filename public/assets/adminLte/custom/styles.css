@@ -103,6 +103,21 @@
     color: antiquewhite;
 }
 
+.btn-filter {
+    color: antiquewhite;
+    background-color: purple;
+}
+
+.btn-filter::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0b0";
+}
+
+.btn-filter:hover {
+    color: antiquewhite;
+}
+
 .fa-check-circle {
     color: green;
 }
@@ -117,5 +132,9 @@ a.verify:hover {
 }
 
 .filter {
+    margin-bottom: 5px;
+}
+
+.col-12 {
     margin-bottom: 5px;
 }
