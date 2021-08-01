@@ -22,5 +22,6 @@ const ALERT_SIGNIN_MAIL = true;
 
 /** Queues Constants */
 
+const QUEUE_EXCEPTION = "queueException";
 const QUEUE_SYSTEM = "queueSystem";
 const QUEUE_USER = "queueUser";

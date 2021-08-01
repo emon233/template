@@ -38,6 +38,8 @@ Route::middleware('verified')->group(function () {
             // Route::delete('/delete/{access}', [AccessController::class, 'delete'])->name('delete');
             Route::get('/auto-update', [AccessController::class, 'auto'])->name('auto');
         });
+
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
     });
 
     Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () {
