@@ -15,3 +15,12 @@ const SITE_LOGO_SECONDARY = "assets/adminLte/dist/img/AdminLTELogo.png";
 const SITE_LOGO_MAIL = "assets/adminLte/dist/img/AdminLTELogo.png";
 
 const DARK_MODE = false;
+
+/** Mail Defaults */
+
+const ALERT_SIGNIN_MAIL = true;
+
+/** Queues Constants */
+
+const QUEUE_SYSTEM = "queueSystem";
+const QUEUE_USER = "queueUser";

@@ -1,7 +1,7 @@
 @component('mail::message')
-# Welcome
+# Signin Detected
 
-Welcome to ## {{ SITE_NAME }} ##.
+# {{ $user }}
 
 @component('mail::button', ['url' => route('welcome')])
 Visit

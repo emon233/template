@@ -7,6 +7,7 @@ use App\Http\Controllers\WebController as BaseController;
 use App\Http\Requests\Auth\SigninPhoneRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\SigninRequest;
+use App\Jobs\User\SigninEmailJob;
 
 class SigninController extends BaseController
 {
@@ -32,6 +33,7 @@ class SigninController extends BaseController
         $credentials = $request->only('phone_no', 'password');
 
         if (Auth::guard('web')->attempt($credentials, $request->filled('remember'))) {
+
             return redirect()->route('home');
         }
 
@@ -40,9 +42,11 @@ class SigninController extends BaseController
 
     public function signin(SigninRequest $request)
     {
+        // dd(\Browser::detect());
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('web')->attempt($credentials, $request->filled('remember'))) {
+            SigninEmailJob::dispatch(auth()->user())->onQueue(QUEUE_USER);
             return redirect()->route('home');
         }
 
