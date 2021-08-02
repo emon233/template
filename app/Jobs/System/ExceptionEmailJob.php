@@ -35,7 +35,6 @@ class ExceptionEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        $email = new Exception($this->exception);
-        Mail::to(EMAIL_ERROR_REPORT)->send($email);
+        Mail::to(EMAIL_ERROR_REPORT)->send(new Exception($this->exception));
     }
 }

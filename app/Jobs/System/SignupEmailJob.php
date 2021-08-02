@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Jobs\User;
+namespace App\Jobs\System;
 
-use Mail;
-use App\Mail\User\Signin;
-
+use App\Mail\System\UserSignup;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,7 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SigninEmailJob implements ShouldQueue
+class SignupEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -35,6 +33,6 @@ class SigninEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->user->email)->send(new Signin);
+        return Mail::to(EMAIL_SIGNUP_REPORT)->send(new UserSignup($user));
     }
 }
