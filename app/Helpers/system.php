@@ -25,3 +25,11 @@ const ALERT_SIGNIN_MAIL = true;
 const QUEUE_EXCEPTION = "queueException";
 const QUEUE_SYSTEM = "queueSystem";
 const QUEUE_USER = "queueUser";
+
+/** Mails that are Allowed */
+
+const ALLOW_MAIL_SYSTEM_EXCEPTION = true;
+const ALLOW_MAIL_SYSTEM_SIGNUP = true;
+
+const ALLOW_MAIL_USER_WELCOME = true;
+const ALLOW_MAIL_USER_SIGNIN = true;

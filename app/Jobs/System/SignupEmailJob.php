@@ -33,6 +33,6 @@ class SignupEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        return Mail::to(EMAIL_SIGNUP_REPORT)->send(new UserSignup($user));
+        if (ALLOW_MAIL_SYSTEM_SIGNUP) Mail::to(EMAIL_SIGNUP_REPORT)->send(new UserSignup($user));
     }
 }

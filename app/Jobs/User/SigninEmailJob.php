@@ -35,6 +35,6 @@ class SigninEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->user->email)->send(new Signin);
+        if (ALLOW_MAIL_USER_SIGNIN) Mail::to($this->user->email)->send(new Signin);
     }
 }
